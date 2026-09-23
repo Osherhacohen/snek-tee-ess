@@ -278,10 +278,11 @@ class Game
 
   private getMoveDelay(): number
   {
-    const baseDelay = 100 / (BASE_SPEED_FACTOR * this.speedSetting * this.speedMultiplier);
+    const physicalSpeed = 10 * BASE_SPEED_FACTOR * this.speedSetting * this.speedMultiplier;
     const direction = this.snake.getNextMovementDirection();
     const isHorizontal = direction === Direction.Left || direction === Direction.Right;
-    return isHorizontal ? baseDelay * MULTIPLIER : baseDelay;
+    const cellDistance = isHorizontal ? 1 / MULTIPLIER : 1;
+    return 1000 * cellDistance / physicalSpeed;
   }
 
   private scheduleNextFrame(delay: number): void
