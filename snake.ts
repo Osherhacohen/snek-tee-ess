@@ -281,7 +281,7 @@ class Game
     const baseDelay = 100 / (BASE_SPEED_FACTOR * this.speedSetting * this.speedMultiplier);
     const direction = this.snake.getNextMovementDirection();
     const isHorizontal = direction === Direction.Left || direction === Direction.Right;
-    return isHorizontal ? baseDelay / MULTIPLIER : baseDelay;
+    return isHorizontal ? baseDelay * MULTIPLIER : baseDelay;
   }
 
   private scheduleNextFrame(delay: number): void
